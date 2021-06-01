@@ -1,14 +1,15 @@
 ## users テーブル
 
-| Column                          | Type   | Options     |
-| ------------------------------- | ------ | ------------|
-| nickname                        | string | null: false |
-| email                           | string | null: false |
-| encrypted_password              | string | null: false |
-| encrypted_password_confirmation | string | null: false |
-| name                            | string | null: false |
-| katakana_name                   | string | null: false |
-| birth_day                       | string | null: false |
+| Column                          | Type   | Options                    |
+| ------------------------------- | ------ | ---------------------------|
+| nickname                        | string | null: false                |
+| email                           | string | null: false, unique: true  |
+| encrypted_password              | string | null: false                |
+| first_name                      | string | null: false                |
+| last_name                       | string | null: false                |
+| first_name_kana                 | string | null: false                |
+| last_name_kana                  | string | null: false                |
+| birth_day                       | date   | null: false                |
 
 ### Association
 - has_many :items
@@ -20,24 +21,23 @@
 | -----------------| ---------- | -------------------------------|
 | name             | string     | null: false                    |
 | description      | text       | null: false                    |
-| categry          | string     | null: false                    |
-| status           | string     | null: false                    |
-| shipping_charges | string     | null: false                    |
-| days_to_ship     | string     | null: false                    |
+| categry          | integer    | null: false                    |
+| status           | integer    | null: false                    |
+| shipping_charges | integer    | null: false                    |
+| days_to_ship     | integer    | null: false                    |
 | price            | integer    | null: false                    |
+| commission       | integer    | null: false                    |
+| profit           | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- has_one :purchases
+- has_one :purchase
 
 ## purchases テーブル
 
 | Column           | Type       | Options                        |
 | -----------------| ---------- | -------------------------------|
-| card_information | string     | null: false                    |
-| expiration_date  | string     | null: false                    |
-| security_code    | string     | null: false                    |
 | user             | references | null: false, foreign_key: true |
 | item             | references | null: false, foreign_key: true |
 
@@ -51,11 +51,12 @@
 | Column        | Type       | Options                        |
 | --------------| ---------- | -------------------------------|
 | postal_code   | string     | null: false                    |
-| prefectures   | string     | null: false                    |
+| prefectures   | integer    | null: false                    |
+| ctiy          | integer    | null: false                    |
 | address       | string     | null: false                    |
-| building name | string     | null: false                    |
+| building_name | string     |                                |
 | phone_number  | string     | null: false                    |
-| purchases     | references | null: false, foreign_key: true |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchases
+- belongs_to :purchase
