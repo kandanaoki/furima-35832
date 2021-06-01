@@ -23,8 +23,8 @@
 | description         | text       | null: false                    |
 | categry_id          | integer    | null: false                    |
 | status_id           | integer    | null: false                    |
-| shipping_charges_id | integer    | null: false                    |
-| Shipping_area_id    | integer    | null: false                    |
+| shipping_charge_id  | integer    | null: false                    |
+| prefecture_id       | integer    | null: false                    |
 | days_to_ship_id     | integer    | null: false                    |
 | price               | integer    | null: false                    |
 | commission          | integer    | null: false                    |
@@ -52,7 +52,7 @@
 | Column         | Type       | Options                        |
 | ---------------| ---------- | -------------------------------|
 | postal_code    | string     | null: false                    |
-| prefectures_id | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | ctiy           | string     | null: false                    |
 | address        | string     | null: false                    |
 | building_name  | string     |                                |
