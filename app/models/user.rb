@@ -6,12 +6,18 @@ class User < ApplicationRecord
   NAME_KANA_REGEX = /\A[ァ-ヶ]+\z/.freeze
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
 
-  validates :nickname,        presence: true
-  validates :first_name,      presence: true, format: NAME_REGEX
-  validates :last_name,       presence: true, format: NAME_REGEX
-  validates :first_name_kana, presence: true, format: NAME_KANA_REGEX
-  validates :last_name_kana,  presence: true, format: NAME_KANA_REGEX
-  validates :birth_date,      presence: true
+  with_options presence: true do
+    validates :nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date
+   end
+
+  with_options format: NAME_REGEX do
+    validates :first_name, :last_name
+  end
+
+  with_options format: NAME_KANA_REGEX do
+    validates :first_name_kana, :last_name_kana
+  end
+
   validates :password, format: PASSWORD_REGEX
 
   # has_many :items
