@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date
-   end
+  end
 
   with_options format: NAME_REGEX do
     validates :first_name, :last_name

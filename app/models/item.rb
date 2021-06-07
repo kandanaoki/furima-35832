@@ -7,7 +7,7 @@ class Item < ApplicationRecord
     validates :category_id, :status_id, :shipping_charge_id, :prefecture_id, :days_to_ship_id
   end
 
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, only_integer: true }
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true }
 
   belongs_to :user
   # has_one :purchase
