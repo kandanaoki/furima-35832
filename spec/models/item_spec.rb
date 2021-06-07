@@ -92,6 +92,31 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
+      it 'category_idが1以外であること' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
+      end
+      it 'status_idが1以外であること' do
+        @item.status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Status must be other than 1')
+      end
+      it 'shipping_charge_idが1以外であること' do
+        @item.shipping_charge_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping charge must be other than 1')
+      end
+      it 'prefecture_idが1以外であること' do
+        @item.prefecture_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
+      end
+      it 'days_to_ship_idが1以外であること' do
+        @item.days_to_ship_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Days to ship must be other than 1')
+      end
     end
   end
 end
