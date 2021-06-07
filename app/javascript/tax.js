@@ -3,11 +3,11 @@ function tax(){
   price.addEventListener("keyup", () =>{
     const addTaxPrice = document.getElementById("add-tax-price")
     const profit = document.getElementById("profit")
-    const tax = 0.1
-    const profitRate = 1 - tax
-    addTaxPrice.innerHTML = price.value * tax
-    profit.innerHTML = price.value * profitRate
-    console.log(`${price.value}`)
+    const taxRate = 0.1
+    const tax = price.value * taxRate
+    const taxRounded = Math.round(tax)
+    addTaxPrice.innerHTML = taxRounded
+    profit.innerHTML = price.value - taxRounded
   })
 }
 
