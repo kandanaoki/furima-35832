@@ -148,7 +148,7 @@
             </h3>
             <div class='item-price'>
               <span> <%= item.price%>円<br>
-              <%=ShippingCharge.data.find{|a| a[:id] == item.shipping_charge_id}[:name] %></span>
+              <%= item.shipping_charge.name %>
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
                 <span class='star-count'>0</span>
