@@ -3,8 +3,8 @@ FactoryBot.define do
     address = Gimei.address
     address_number = Faker::Number.number(digits: 3).to_s.insert(1, '-').insert(3, '-')
 
-    user_id       { Faker::Number.number }
-    item_id       { Faker::Number.number }
+    user_id       {}
+    item_id       {}
     token         { 'tok_abcdefghijk00000000000000000' }
     postal_code   { Faker::Number.number(digits: 7).to_s.insert(3, '-') }
     prefecture_id { Faker::Number.between(from: 2, to: 48) }
