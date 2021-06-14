@@ -45,8 +45,6 @@ RSpec.describe PurchaseShippingAdress, type: :model do
       it '郵便番号が必須であること。' do
         @purchase_shipping_adress.user_id = @user.id
         @purchase_shipping_adress.item_id = @item.id
-        @purchase_shipping_adress.user_id = @user.id
-        @purchase_shipping_adress.item_id = @item.id
         @purchase_shipping_adress.postal_code = ''
         @purchase_shipping_adress.valid?
         expect(@purchase_shipping_adress.errors.full_messages).to include("Postal code can't be blank")

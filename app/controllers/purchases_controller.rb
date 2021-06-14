@@ -5,7 +5,6 @@ class PurchasesController < ApplicationController
 
   def index
     @purchase_shipping_adress = PurchaseShippingAdress.new
-    @purchase = Purchase.new
   end
 
   def create
