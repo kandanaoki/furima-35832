@@ -2,7 +2,6 @@ class PurchaseShippingAdress
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :token, :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number
 
-  # ここにバリデーションの処理を書く
   with_options presence: true do
     validates :user_id, :item_id, :token, :city, :address
 
