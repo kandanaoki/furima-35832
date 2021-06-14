@@ -15,7 +15,6 @@ class PurchasesController < ApplicationController
       redirect_to root_path
     else
       render action: :index
-
     end
   end
 
