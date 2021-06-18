@@ -8,6 +8,8 @@ ja:
         first_name_kana: 「お名前カナ(全角)」の名前
         last_name_kana: 「お名前カナ(全角)」の名字
         birth_date: 生年月日
+        activerecord:
+    attributes:
       item:
         name: 商品名
           blank: を入力してください
