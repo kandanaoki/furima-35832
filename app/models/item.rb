@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   with_options presence: true do
-    validates :name, :description, :image
+    validates :name, :description, :images
   end
 
   with_options numericality: { other_than: 1 } do
@@ -11,7 +11,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one :purchase
-  has_one_attached :image
+  has_many_attached :images
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
