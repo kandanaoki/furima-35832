@@ -18,6 +18,7 @@ ja:
         prefecture_id: 発送元の地域 
         days_to_ship_id: 発送までの日数
         price: 販売価格
+        blank: を入力してください
   activemodel:
     attributes:
       purchase_shipping_adress:
@@ -27,4 +28,5 @@ ja:
         postal_code: 郵便番号
         prefecture_id: 都道府県
         phone_number: 電話番号
+        blank: を入力してください
 
