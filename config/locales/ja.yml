@@ -10,6 +10,7 @@ ja:
         birth_date: 生年月日
       item:
         name: 商品名
+          blank: を入力してください
         description: 商品の説明 
         images: 画像
         category_id: カテゴリー
