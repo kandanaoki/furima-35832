@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_item, only: [:show, :edit, :update, :destroy]
+  before_action :find_item, only: [:show, :edit, :update, :destroy, :purchase]
   before_action :move_to_index, only: [:edit, :update, :destroy]
+  before_action :self_move_to_index, only: [:purchase]
+
 
   def index
     @items = Item.order('created_at DESC').includes(:user)
@@ -39,6 +41,18 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def purchase
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    customer_token = current_user.card.customer_token
+    Payjp::Charge.create(
+      amount: @item.price,
+      customer: customer_token,
+      currency: 'jpy'
+    )
+    Purchase.create(user_id: current_user.id , item_id: params[:id])
+    redirect_to root_path
+  end
+
   private
 
   def item_params
@@ -52,5 +66,8 @@ class ItemsController < ApplicationController
 
   def move_to_index
     redirect_to root_path if current_user != @item.user || @item.purchase.present?
+  end
+  def self_move_to_index
+    redirect_to root_path if current_user == @item.user || @item.purchase.present?
   end
 end
