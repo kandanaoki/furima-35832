@@ -88,15 +88,54 @@
     </div>
     <p class='info-text'>※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。</p>
   </div>
+
+    <h1 class='form-header-text'>
+    </h1>
+
   <div class="form-group">
-    <h2 class='form-bottom-text'>
-      「会員登録」のボタンを押すことにより、
-      <span>利用規約</span>
-      <br>に同意したものとみなします
-    </h2>
+    <p class='form-info-header'>
+      カード情報
+    </p>
+    <p class='form-info-text'>
+      カード番号: <%= "**** **** **** " + @card[:last4] %>
+    </p>
+    <p class='form-info-text'>
+      有効期限: <%= @card[:exp_month] %>/<%= @card[:exp_year] %>
+    </p>
   </div>
+
+  <h1 class='form-header-text'>
+  </h1>
+
+  <div class="form-group">
+    <p class='form-info-header'>
+      住所
+    </p>
+    <p class='form-info-text'>
+      郵便番号: <%= @shipping_adress.postal_code%>
+    </p>
+    <p class='form-info-text'>
+      都道府県: <%=@shipping_adress.prefecture.name%>
+    </p>
+    <p class='form-info-text'>
+      市区町村: <%=@shipping_adress.city%>
+    </p>
+    <p class='form-info-text'>
+      番地: <%=@shipping_adress.address%>
+    </p>
+    <p class='form-info-text'>
+      建物名: <%=@shipping_adress.building_name%>
+    </p>
+    <p class='form-info-text'>
+      電話番号: <%=@shipping_adress.phone_number%>
+    </p>
+  </div>
+  
+  <div class="form-group">
+  </div>
+
   <div class='register-btn'>
-    <%= f.submit "会員登録" , class:"register-red-btn" %>
+    <%= f.submit "変更" , class:"register-red-btn" %>
   </div>
   <p class='register-info'>本人情報の登録について</p>
 </div>
