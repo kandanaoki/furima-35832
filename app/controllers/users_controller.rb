@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
+  before_action :move_to_index, only: [:edit, :update]
 
   def edit
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 環境変数を読み込む
@@ -26,5 +27,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:nickname, :email, :password, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date)
+  end
+
+  def move_to_index
+    redirect_to root_path if current_user == params[:id]
   end
 end
