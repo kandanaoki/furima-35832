@@ -85,15 +85,21 @@
   <%# /商品の概要 %>
   
   <div class="comment-box" id = 'comment_text_form'>
-    <% if user_signed_in? %>
-      <%= form_with model: @comment, url: item_comments_path(@item.id) do |f| %>
-      <%= f.text_field :text, class: "comment-text", id: "comment_text" %>
-      <%= f.submit 'コメントする', class: "comment-btn"%>
-      <% end %>
-    <% end %>
     <h2 class="name">
       コメント
     </h2>
+    <% if user_signed_in? %>
+      <%= form_with model: @comment, url: item_comments_path(@item.id) do |f| %>
+      <%= f.text_field :text, class: "comment-text", id: "comment_text" %>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <%= f.submit 'コメントする', class: "comment-btn"%>
+      <% end %>
+    <% end %>
+    
       <div id='comments'>
       <% @comments.reverse_each do |comment| %>
         <p class = "commented-by"><%= "Commented by #{comment.user.nickname}" %></p>
