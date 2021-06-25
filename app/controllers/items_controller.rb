@@ -23,6 +23,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = Comment.order('created_at ASC').includes(:user)
   end
 
   def edit
