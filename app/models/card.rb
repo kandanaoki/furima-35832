@@ -1,4 +1,3 @@
 class Card < ApplicationRecord
-  belongs_to :user
-  attr_accessor :card_token
+  belongs_to :user, optional: true
 end
