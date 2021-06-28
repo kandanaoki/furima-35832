@@ -3,14 +3,11 @@ class UsersController < ApplicationController
   before_action :move_to_index, only: [:edit, :update]
 
   def edit
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # 環境変数を読み込む
-    card = Card.find_by(user_id: current_user.id) # ユーザーのid情報を元に、カード情報を取得
-
-    redirect_to new_card_path and return unless card.present?
-
-    customer = Payjp::Customer.retrieve(card.customer_token) # 先程のカード情報を元に、顧客情報を取得
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    card = Card.find_by(user_id: current_user.id)
+    customer = Payjp::Customer.retrieve(card.customer_token)
     @card = customer.cards.first
-    @shipping_adress = current_user.shipping_adress
+    @shipping_address = current_user.shipping_address
   end
   
   def update

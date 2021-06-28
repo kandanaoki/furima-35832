@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function(){
   if ( document.getElementById('item-image')){
-    console.log("loaded")
     const ImageList = document.getElementById('image-list');
 
     function createImageHTML(blob){
