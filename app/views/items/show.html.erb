@@ -31,7 +31,7 @@
     <% if Purchase.find_by(item_id: @item.id).nil? %>
       <% if user_signed_in? %>
         <% if @item.user == current_user %>
-          <%= link_to "商品の編集", edit_item_path(@item.id), method: :post, class: "item-red-btn" %>
+          <%= link_to "商品の編集", edit_item_path(@item.id), class: "item-red-btn" %>
           <p class="or-text">or</p>
           <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
         <% else%>
@@ -68,6 +68,14 @@
         <tr>
           <th class="detail-item">発送日の目安</th>
           <td class="detail-value"><%= @item.days_to_ship.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">タグ</th>
+          <td class="detail-value">
+            <% @tags.each do |tag| %>
+              <%= tag.tag_name %>   
+            <% end %>
+          </td>
         </tr>
       </tbody>
     </table>

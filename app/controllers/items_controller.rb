@@ -10,31 +10,42 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
+    @item = ItemTag.new
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
+    @item = ItemTag.new(item_params)
+    if @item.valid?
+      @item.save
+      return redirect_to root_path
     else
-      render action: :new
+      render "new"
     end
   end
 
   def show
     @comment = Comment.new
     @comments = Comment.order('created_at ASC').includes(:user)
+    @tags = @item.tags
   end
 
   def edit
+    tags = @item.tags
+    tag_names = []
+    tags.each do |tag|
+      tag_names.push(tag.tag_name)
+    end
+    tag_names_joined = tag_names.join(', ')
+    @item_tag = ItemTag.new(name: @item.name, description: @item.description, images: @item.images, category_id:@item.category_id, status_id:@item.status_id, shipping_charge_id: @item.shipping_charge_id, prefecture_id:@item.prefecture_id, days_to_ship_id: @item.days_to_ship_id, price: @item.price, user_id: @item.user_id, tag_name: tag_names_joined)
   end
 
   def update
-    if @item.update(item_params)
-      redirect_to item_path(@item.id)
+    @item_tag = ItemTag.new(item_params_update)
+    if @item_tag.valid?
+      @item_tag.update
+      return redirect_to root_path
     else
-      render action: :edit
+      render "edit"
     end
   end
 
@@ -58,8 +69,13 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :status_id, :shipping_charge_id, :prefecture_id,
+    params.require(:item_tag).permit(:tag_name, :name, :description, :category_id, :status_id, :shipping_charge_id, :prefecture_id,
                                  :days_to_ship_id, :price, images: []).merge(user_id: current_user.id)
+  end
+
+  def item_params_update
+    params.require(:item_tag).permit(:tag_name, :name, :description, :category_id, :status_id, :shipping_charge_id, :prefecture_id,
+                                 :days_to_ship_id, :price, images: []).merge(user_id: current_user.id, item_id: @item.id)
   end
 
   def find_item
@@ -69,7 +85,9 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to root_path if current_user != @item.user || @item.purchase.present?
   end
+
   def self_move_to_index
     redirect_to root_path if current_user == @item.user || @item.purchase.present?
   end
+
 end
