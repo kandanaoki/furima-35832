@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :items do
     post 'purchase', on: :member
     resources :comments, only: :create
+    collection do
+      get 'search'
+    end
   end
   resources :users, only: [:edit, :update]
   resources :cards, only: [:new, :create]
