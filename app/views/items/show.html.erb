@@ -7,13 +7,12 @@
       <%= @item.name %>
     </h2>
     <div class="item-img-content">
-      <%# <%= image_tag @item.image ,class:"item-box-img" %> 
       <div class="items">
         <% @item.images.each do |image| %>
           <%= image_tag image, class:'item-img' %>
         <% end %>
       </div>
-      <% if Purchase.find_by(item_id: @item.id).present? %>
+      <% if @item.purchase.present? %>
         <div class="sold-out">
           <span>Sold Out!!</span>
         </div>
@@ -28,7 +27,7 @@
       </span>
     </div>
     
-    <% if Purchase.find_by(item_id: @item.id).nil? %>
+    <% if @item.purchase.nil? %>
       <% if user_signed_in? %>
         <% if @item.user == current_user %>
           <%= link_to "商品の編集", edit_item_path(@item.id), class: "item-red-btn" %>

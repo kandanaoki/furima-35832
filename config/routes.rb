@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :comments, only: :create
     collection do
       get 'search'
+      get 'complex_search'
     end
   end
   resources :users, only: [:edit, :update]

@@ -60,15 +60,19 @@
 
 }
 
-.category-list {
+.lists-left-child {
   text-decoration: none;
   margin-right: 3vw;
   color: #333333;
 }
 
-.brand-list {
-  text-decoration: none;
-  color: #333333;
+.lists-left-child:hover {
+  color: white;
+  background-color: #3ccace;
+}
+
+.display-none{
+  display:none
 }
 
 .lists-right {
