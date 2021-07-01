@@ -1,4 +1,3 @@
-if (location.pathname.match("/")){
   document.addEventListener("DOMContentLoaded", () => {
     const inputElement = document.getElementById("input-box");
     inputElement.addEventListener("keyup", () => {
@@ -29,4 +28,3 @@ if (location.pathname.match("/")){
       };
     })
   });
-};

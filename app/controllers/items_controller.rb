@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy, :purchase]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :self_move_to_index, only: [:purchase]
+  before_action :complex_search_item, only: [:index, :show, :complex_search]
+  before_action :set_item_column
 
 
   def index
@@ -72,6 +74,10 @@ class ItemsController < ApplicationController
     render json:{ keyword: tag }
   end
 
+  def complex_search
+    @results = @q.result
+  end
+
 
   private
 
@@ -97,4 +103,11 @@ class ItemsController < ApplicationController
     redirect_to root_path if current_user == @item.user || @item.purchase.present?
   end
 
+  def complex_search_item
+    @q = Item.ransack(params[:q])
+  end
+
+  def set_item_column
+    @item_name = Item.select("name").distinct.order('name ASC')
+  end
 end

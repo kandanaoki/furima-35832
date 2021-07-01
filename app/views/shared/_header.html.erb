@@ -5,9 +5,6 @@
     <form class="search-form" action="#">
       <input class='input-box' id="input-box" autocomplete="on" list="suggestion"　placeholder='キーワードから探す'>
         <datalist id="suggestion">
-          <%# <option value="渋谷"> %>
-          <%# <option value="新宿"> %>
-          <%# <option value="池袋"> %>
         </datalist><br>
       <button class="search-button">
         <%= image_tag "search.png", class:"search-icon" %>
@@ -16,8 +13,47 @@
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+      <li><%= link_to 'カテゴリー', "#", class: "lists-left-child" %></li>
+      <li><%= link_to 'ブランド', "#", class: "lists-left-child" %></li>
+      <li><%= link_to '限定して検索する', "#", class: "lists-left-child", id: 'search-by-price-parent' %>
+      <div class = 'display-none' id = 'search-by-price-child'>
+        <%= search_form_for @q, url: complex_search_items_path do |f| %>
+          <%= f.label :name_eq, '商品名：' %>
+          <%= f.collection_select :name_eq, @item_name, :name, :name, include_blank: '指定なし' %>
+          <br>
+          <%= f.label :category_id_eq, 'カテゴリー：' %>
+          <%= f.collection_select :category_id_eq, Category.where.not(id: 1), :id, :name, include_blank: '指定なし' %>
+          <br>
+          <%= f.label :status_id_eq, '商品の状態：' %>
+          <%= f.collection_select :status_id_eq, Status.where.not(id: 1), :id, :name, include_blank: '指定なし' %>
+          <br>
+          <%= f.label :shipping_charge_id_eq, '配送料の負担：' %>
+          <%= f.collection_select :shipping_charge_id_eq, ShippingCharge.where.not(id: 1), :id, :name, include_blank: '指定なし' %>
+          <br>
+          <%= f.label :prefecture_id_eq, '発送元の地域：' %>
+          <%= f.collection_select :prefecture_id_eq, Prefecture.where.not(id: 1), :id, :name, include_blank: '指定なし' %>
+          <br>
+          <%= f.label :days_to_ship_id_eq, '発送までの日数：' %>
+          <%= f.collection_select :days_to_ship_id_eq, DaysToShip.where.not(id: 1), :id, :name, include_blank: '指定なし' %>
+          <br>
+          <%= f.label :price, '価格：' %>
+          <br>
+          <%= f.radio_button :price_lteq, '' %>
+          指定なし
+          <br>
+          <%= f.radio_button :price_lteq, '1000' %>
+          1000円以下
+          <br>
+          <%= f.radio_button :price_lteq, '2500' %>
+          2500円以下
+          <br>
+          <%= f.radio_button :price_lteq, '5000' %>
+          5000円以下
+          <br>
+          <%= f.submit '検索' %>
+        <% end %>
+      </div>
+      </li>
     </ul>
     <ul class='lists-right'>
       <%if user_signed_in? %>

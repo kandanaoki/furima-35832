@@ -10,6 +10,7 @@ require("../tax.js")
 require("../card.js")
 require('../preview')
 require("../tag")
+require("../searchByPrice")
 
 
 
