@@ -9,13 +9,15 @@ Rails.application.routes.draw do
     get 'cards', to: 'users/registrations#new_card'
     post 'cards', to: 'users/registrations#create_card'
   end
+
   root to: "items#index"
   resources :items do
     post 'purchase', on: :member
     resources :comments, only: :create
     collection do
       get 'search'
-      get 'complex_search'
+      get 'complex_search_item'
+      get 'complex_search_tag'
     end
   end
   resources :users, only: [:edit, :update]

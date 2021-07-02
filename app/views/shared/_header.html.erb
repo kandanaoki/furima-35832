@@ -2,14 +2,12 @@
 <header class='top-page-header'>
   <div class='search-bar-contents'>
     <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
-    <form class="search-form" action="#">
-      <input class='input-box' id="input-box" autocomplete="on" list="suggestion"　placeholder='キーワードから探す'>
-        <datalist id="suggestion">
-        </datalist><br>
-      <button class="search-button">
-        <%= image_tag "search.png", class:"search-icon" %>
-      </button>
-    </form>
+    <%= search_form_for @t, url: complex_search_tag_items_path,  class: "search-form" do |f| %>
+      <%= f.text_field :tag_name_eq, class: 'input-box', id: 'input-box', list: 'suggestion', placeholder: 'キーワードから探す' %>
+      <datalist id="suggestion">
+      </datalist>
+      <%= f.submit "検索", class: "search-button" %>
+    <% end %>
   </div>
   <div class='nav'>
     <ul class='lists-left'>
@@ -17,7 +15,8 @@
       <li><%= link_to 'ブランド', "#", class: "lists-left-child" %></li>
       <li><%= link_to '限定して検索する', "#", class: "lists-left-child", id: 'search-by-price-parent' %>
       <div class = 'display-none' id = 'search-by-price-child'>
-        <%= search_form_for @q, url: complex_search_items_path do |f| %>
+        <%= search_form_for @q, url: complex_search_item_items_path do |f| %>
+          <br>
           <%= f.label :name_eq, '商品名：' %>
           <%= f.collection_select :name_eq, @item_name, :name, :name, include_blank: '指定なし' %>
           <br>
@@ -50,7 +49,7 @@
           <%= f.radio_button :price_lteq, '5000' %>
           5000円以下
           <br>
-          <%= f.submit '検索' %>
+          <%= f.submit "検索", class: "search-button" %>
         <% end %>
       </div>
       </li>
