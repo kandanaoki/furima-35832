@@ -79,3 +79,4 @@ end
 
 gem 'rails-i18n'
 gem 'ransack'
+gem 'gretel', '~> 4.3'
