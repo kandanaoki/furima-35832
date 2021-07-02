@@ -8,6 +8,11 @@
       XHR.send();
       XHR.onload = () => {
         const searchResult = document.getElementById("suggestion");
+        console.log(searchResult.options.length)
+        const searchResultOptions = searchResult.options
+        for (var i = 0, l = searchResultOptions.length; i < l; ++i) {
+          searchResult.removeChild(searchResultOptions[i]);
+        }
         if (XHR.response) {
           const tagName = XHR.response.keyword;
           tagName.forEach((tag) => {
@@ -15,7 +20,7 @@
               const childElement = document.createElement("option");
               childElement.setAttribute("value", tag.tag_name);
               childElement.setAttribute("id", tag.id);
-              childElement.innerHTML = tag.tag_name;
+              console.log(childElement)
               searchResult.appendChild(childElement);
               const clickElement = document.getElementById(tag.id);
               clickElement.addEventListener("click", () => {

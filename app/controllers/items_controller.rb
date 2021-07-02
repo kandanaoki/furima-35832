@@ -3,8 +3,10 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy, :purchase]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :self_move_to_index, only: [:purchase]
-  before_action :complex_search_item, only: [:index, :show, :complex_search]
+  before_action :private_complex_search_item
+  before_action :private_complex_search_tag
   before_action :set_item_column
+  before_action :set_tag_column
 
 
   def index
@@ -74,8 +76,14 @@ class ItemsController < ApplicationController
     render json:{ keyword: tag }
   end
 
-  def complex_search
+  def complex_search_item
     @results = @q.result
+    binding.pry
+  end
+
+  def complex_search_tag
+    @results = @t.result
+    binding.pry
   end
 
 
@@ -103,11 +111,19 @@ class ItemsController < ApplicationController
     redirect_to root_path if current_user == @item.user || @item.purchase.present?
   end
 
-  def complex_search_item
+  def private_complex_search_item
     @q = Item.ransack(params[:q])
+  end
+
+  def private_complex_search_tag
+    @t = Tag.ransack(params[:q])
   end
 
   def set_item_column
     @item_name = Item.select("name").distinct.order('name ASC')
+  end
+
+  def set_tag_column
+    @tag_name = Tag.select("tag_name").distinct.order('tag_name ASC')
   end
 end
