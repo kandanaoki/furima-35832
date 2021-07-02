@@ -1,4 +1,6 @@
 <%= render "shared/header" %>
+  <% breadcrumb :complex_search_item_items %>
+  <%= breadcrumbs separator: " &rsaquo; " %> 
   <div class='item-contents'>
     <h2 class='title'>検索結果</h2>
     <% if @results.length !=0 %>

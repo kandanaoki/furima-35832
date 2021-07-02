@@ -78,12 +78,10 @@ class ItemsController < ApplicationController
 
   def complex_search_item
     @results = @q.result
-    binding.pry
   end
 
   def complex_search_tag
     @results = @t.result
-    binding.pry
   end
 
 
