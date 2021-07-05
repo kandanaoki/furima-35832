@@ -20,6 +20,10 @@ Rails.application.routes.draw do
       get 'complex_search_tag'
     end
   end
-  resources :users, only: [:edit, :update]
-  resources :cards, only: [:new, :create]
+  resources :users, only: [:edit, :update] do
+    collection do
+      get 'new_card'
+      post 'create_card'
+    end
+  end
 end
