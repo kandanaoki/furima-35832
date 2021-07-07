@@ -14,6 +14,9 @@
 ### Association
 - has_many :items
 - has_many :purchases
+- has_many :comments
+- has_one :shipping_address
+- has_one :card
 
 ## items テーブル
 
@@ -32,6 +35,11 @@
 ### Association
 - belongs_to :user
 - has_one :purchase
+- has_many_attached :images
+- has_many :comments
+- has_many :item_tag_relations
+- has_many :tags
+
 
 ## purchases テーブル
 
@@ -43,7 +51,6 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_address
 
 ## shipping_addresses テーブル
 
@@ -55,7 +62,51 @@
 | address        | string     | null: false                    |
 | building_name  | string     |                                |
 | phone_number   | string     | null: false                    |
-| purchase       | references | null: false, foreign_key: true |
+| user           | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchase
+- belongs_to :user
+
+## cards テーブル
+
+| Column         | Type       | Options                        |
+| ---------------| ---------- | -------------------------------|
+| customer_token | string     | null: false                    |
+| user           | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+
+## comments テーブル
+
+| Column | Type       | Options                        |
+| -------| ---------- | -------------------------------|
+| text   | string     |                                |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## item_tag_relations テーブル
+
+| Column | Type       | Options                        |
+| -------| ---------- | -------------------------------|
+| item   | references | null: false, foreign_key: true |
+| tag    | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :item
+- belongs_to :tag
+
+## tags テーブル
+
+| Column   | Type       | Options                        |
+| ---------| ---------- | -------------------------------|
+| tag_name | references | null: false, uniqueness: true  |
+
+### Association
+- has_many :item_tag_relations
+- has_many :items
+
