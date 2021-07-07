@@ -3,10 +3,10 @@
 <%= breadcrumbs separator: " &rsaquo; " %> 
   <div class='item-contents'>
     <h2 class='title'>検索結果</h2>
-    <% if @results.length !=0 %>
       <ul class='item-lists'>
         <% @results.each do |result| %>
-          <% result.items.each do |item| %>
+          <% if result.items.length != 0 %>
+            <% result.items.each do |item| %>
             <li class='list'>
               <%= link_to item_path(item.id) do %>
               <div class='item-img-content'>
@@ -33,12 +33,12 @@
               </div>
               <% end %>
             </li>
+            <% end %>
+          <% else %>
+            該当する商品はありません
           <% end %>
         <% end %>
       </ul>
-    <% else %>
-      該当する商品はありません
-    <% end %>
     <br>
   </div>
 <%= link_to 'トップページへ戻る', root_path %>

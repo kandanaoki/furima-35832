@@ -31,7 +31,11 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include SignUpSupport
+  config.include SignUpExceptForCardSupport
   config.include SignInSupport
+  config.include SignOutSupport
+  config.include ShippingSupport
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

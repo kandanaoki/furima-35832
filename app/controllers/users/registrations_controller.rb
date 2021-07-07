@@ -49,10 +49,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
     unless card.valid?
       render :new_card
-      binding.pry
       return
     end
-    binding.pry
     @user.build_shipping_address(@shipping_address.attributes)
     @user.build_card(card.attributes)
     @user.save
