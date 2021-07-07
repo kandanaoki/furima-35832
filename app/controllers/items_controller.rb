@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search, :complex_search_item, :complex_search_tag]
   before_action :find_item, only: [:show, :edit, :update, :destroy, :purchase]
   before_action :move_to_index, only: [:edit, :update, :destroy]
   before_action :self_move_to_index, only: [:purchase]
@@ -61,13 +61,45 @@ class ItemsController < ApplicationController
   def purchase
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     customer_token = current_user.card.customer_token
-    Payjp::Charge.create(
-      amount: @item.price,
-      customer: customer_token,
-      currency: 'jpy'
+    card = Card.find_by(user_id: current_user.id)
+    customer = Payjp::Customer.retrieve(card.customer_token)
+    @card = customer.cards.first
+    if @card != nil
+      Payjp::Charge.create(
+        amount: @item.price,
+        customer: customer_token,
+        currency: 'jpy'
+      )
+      Purchase.create(user_id: current_user.id , item_id: params[:id])
+      redirect_to root_path
+    else
+      redirect_to action: :new_card
+    end
+  end
+
+  def new_card
+    @card = Card.new
+  end
+
+  def create_card
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    customer = Payjp::Customer.create(
+      description: 'test',
+      card: params[:card_token]
     )
-    Purchase.create(user_id: current_user.id , item_id: params[:id])
-    redirect_to root_path
+
+    card = Card.new( 
+      customer_token: customer.id,
+      user_id: current_user.id
+    )
+    
+    unless card.valid?
+      render :new_card
+      return
+    end
+
+    current_user.card.update(customer_token: customer.id)
+    redirect_to action: :show, id: params[:id]
   end
 
   def search

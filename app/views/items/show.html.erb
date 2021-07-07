@@ -22,7 +22,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        <%=@item.price%>
+        <%=@item.price%>円
       </span>
       <span class="item-postage">
         <%= @item.shipping_charge.name %>
@@ -34,7 +34,7 @@
         <% if @item.user == current_user %>
           <%= link_to "商品の編集", edit_item_path(@item.id), class: "item-red-btn" %>
           <p class="or-text">or</p>
-          <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
+          <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy", name:"item-destroy"  %>
         <% else%>
           <%= link_to "購入する", purchase_item_path(@item.id), method: :post, class:"item-red-btn"%>
         <% end %>
@@ -105,7 +105,7 @@
         <br>
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
-      <%= f.submit 'コメントする', class: "comment-btn"%>
+      <%= f.submit 'コメントする', class: "comment-btn", name: "commit2"%>
       <% end %>
     <% end %>
     
