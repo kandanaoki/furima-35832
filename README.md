@@ -20,31 +20,59 @@ Email kandakandaa2@gmail.com
 ## 利用方法	
 
 ## 目指した課題解決
-個人間での、売買ができるようにしたかった。
+個人間での、売買できるようにしたいと考えました。
 
 ## 洗い出した要件
 - デプロイ機能の実装
-- Basic認証の導入
+- Basic認証の導入  
+アプリを使えるユーザーを制限しました。
+[![Image from Gyazo](https://i.gyazo.com/8abdef9869de7712082e98483d57155e.png)](https://gyazo.com/8abdef9869de7712082e98483d57155e)
 - データベース設計
-- ユーザー管理機能の実装
-- 商品出品機能の実装
-- 商品一覧表示機能の実装
-- 商品詳細表示機能の実装
-- 商品情報編集機能の実装
-- 商品削除機能の実装
-- 商品購入機能の実装
+- ユーザー管理機能の実装  
+ユーザーの登録、ログイン、ログアウトを可能にしました。
+- 商品出品機能の実装  
+商品を出品できるようにしました。
+[![Image from Gyazo](https://i.gyazo.com/c862f8bb32fd4d846d0b5576dbd1ebaf.gif)](https://gyazo.com/c862f8bb32fd4d846d0b5576dbd1ebaf)
+- 商品一覧表示機能の実装  
+ホーム画面で出品された商品を一覧表示できるようにしました。
+- 商品詳細表示機能の実装  
+商品をクリックすると商品の詳細ページに行けるようにしました。
+[![Image from Gyazo](https://i.gyazo.com/d1aed2f03c39d4f8dd06fa56a7ae2982.gif)](https://gyazo.com/d1aed2f03c39d4f8dd06fa56a7ae2982)
+- 商品情報編集機能の実装  
+自分が出品した商品を編集できるようにしました。
+[![Image from Gyazo](https://i.gyazo.com/a5ab975e0220c8631c40f34c0fcc6c8b.gif)](https://gyazo.com/a5ab975e0220c8631c40f34c0fcc6c8b)
+- 商品削除機能の実装  
+自分が出品した商品を削除できるようにしました。
+[![Image from Gyazo](https://i.gyazo.com/2b9ff6124340c5cc9e9bed45c5a63ab8.gif)](https://gyazo.com/2b9ff6124340c5cc9e9bed45c5a63ab8)
+- 商品購入機能の実装  
+出品していないユーザーが、商品を購入できるようにしました。
 - S3の導入
-- EC2の導入
-- 複数の画像投稿機能の実装
-- エラーメッセージの日本語化
-- 購入の簡易化
-- コメント機能の実装
-- ウィザード形式のユーザー管理機能の実装
-- タグ付け機能の実装
-- 複雑な検索機能の実装
-- パンくず機能の実装
-
-実装した機能についての画像やGIFおよびその説明	実装した機能について、それぞれどのような特徴があるのかを列挙する形で記述。画像はGyazoで、GIFはGyazoGIFで撮影すること。
+- EC2の導入  
+サーバーをHerokuからAWSに変更しました。
+- 複数の画像投稿機能の実装  
+1つの商品につき複数の写真を添付できるようにしました。
+[![Image from Gyazo](https://i.gyazo.com/9839b95d8d8c37dee4aa88a8cc40a2b9.jpg)](https://gyazo.com/9839b95d8d8c37dee4aa88a8cc40a2b9)
+- エラーメッセージの日本語化  
+エラーメッセージを日本語化しました。
+[![Image from Gyazo](https://i.gyazo.com/af53f0ab262da2cbd1a51a20a0416644.gif)](https://gyazo.com/af53f0ab262da2cbd1a51a20a0416644)
+- 購入の簡易化  
+ワンクリックで購入できるようにしました。
+[![Image from Gyazo](https://i.gyazo.com/50357e7740ecbcc373ac9191fe21cdaf.gif)](https://gyazo.com/50357e7740ecbcc373ac9191fe21cdaf)
+- コメント機能の実装  
+商品に対してコメントできるようにしました。
+- ウィザード形式のユーザー管理機能の実装  
+ユーザー登録、住所、カード番号を一度に登録できるようにしました。
+[![Image from Gyazo](https://i.gyazo.com/666f0ab4b89a0b2029a6c143eddd34b7.gif)](https://gyazo.com/666f0ab4b89a0b2029a6c143eddd34b7)
+- タグ付け機能の実装  
+商品にタグ付けできるようにしました。
+[![Image from Gyazo](https://i.gyazo.com/8a205ba5951912a18c3cabfdd4284bea.jpg)](https://gyazo.com/8a205ba5951912a18c3cabfdd4284bea)
+- 複雑な検索機能の実装  
+商品を限定して検索できるようにしました。
+[![Image from Gyazo](https://i.gyazo.com/055e055e8f6552b47f8f3a265fbf7bf9.gif)](https://gyazo.com/055e055e8f6552b47f8f3a265fbf7bf9)
+- パンくず機能の実装  
+たどってきたページが一目でわかるようにしました
+[![Image from Gyazo](https://i.gyazo.com/67564f8994e32602d5510e7121a848b7.jpg)](https://gyazo.com/67564f8994e32602d5510e7121a848b7)
+[![Image from Gyazo](https://i.gyazo.com/a29b3c2038b682a5a30fb12615c45970.png)](https://gyazo.com/a29b3c2038b682a5a30fb12615c45970)
 
 ## データベース設計
 [![Image from Gyazo](https://i.gyazo.com/0c3053846595066e9681f609bbcf960b.jpg)](https://gyazo.com/0c3053846595066e9681f609bbcf960b)
