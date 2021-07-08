@@ -60,6 +60,7 @@ Email kandakandaa2@gmail.com
 [![Image from Gyazo](https://i.gyazo.com/50357e7740ecbcc373ac9191fe21cdaf.gif)](https://gyazo.com/50357e7740ecbcc373ac9191fe21cdaf)
 - コメント機能の実装  
 商品に対してコメントできるようにしました。
+[![Image from Gyazo](https://i.gyazo.com/5adf765e742479c43a7037a03cbb3305.gif)](https://gyazo.com/5adf765e742479c43a7037a03cbb3305)
 - ウィザード形式のユーザー管理機能の実装  
 ユーザー登録、住所、カード番号を一度に登録できるようにしました。
 [![Image from Gyazo](https://i.gyazo.com/666f0ab4b89a0b2029a6c143eddd34b7.gif)](https://gyazo.com/666f0ab4b89a0b2029a6c143eddd34b7)
@@ -71,8 +72,7 @@ Email kandakandaa2@gmail.com
 [![Image from Gyazo](https://i.gyazo.com/055e055e8f6552b47f8f3a265fbf7bf9.gif)](https://gyazo.com/055e055e8f6552b47f8f3a265fbf7bf9)
 - パンくず機能の実装  
 たどってきたページが一目でわかるようにしました
-[![Image from Gyazo](https://i.gyazo.com/67564f8994e32602d5510e7121a848b7.jpg)](https://gyazo.com/67564f8994e32602d5510e7121a848b7)
-[![Image from Gyazo](https://i.gyazo.com/a29b3c2038b682a5a30fb12615c45970.png)](https://gyazo.com/a29b3c2038b682a5a30fb12615c45970)
+[![Image from Gyazo](https://i.gyazo.com/89adb3feb4d673e432be41c9ec6f36ed.jpg)](https://gyazo.com/89adb3feb4d673e432be41c9ec6f36ed)[![Image from Gyazo](https://i.gyazo.com/a29b3c2038b682a5a30fb12615c45970.png)](https://gyazo.com/a29b3c2038b682a5a30fb12615c45970)
 
 ## データベース設計
 [![Image from Gyazo](https://i.gyazo.com/0c3053846595066e9681f609bbcf960b.jpg)](https://gyazo.com/0c3053846595066e9681f609bbcf960b)
